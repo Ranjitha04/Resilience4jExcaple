@@ -1,0 +1,29 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      usercircuitbreaker:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        failure-rate-threshold: 5.0
+        slow-call-rate-threshold: 5.0
+        permitted-number-of-calls-in-half-open-state: 4
+        max-wait-duration-in-half-open-state: 30s
+        wait-duration-in-open-state: 30s
+        slow-call-duration-threshold: 2s
+        
+        
+eureka:
+   client:
+       registerWithEureka: true
+       fetchRegistry: true
+   instance:
+       prefer-ip-address: true
+
+
+server:
+   port: 9097
+   
+spring:
+   application:
+       name: circuitbreaker
